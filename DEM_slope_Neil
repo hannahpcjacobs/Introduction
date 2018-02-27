@@ -1,0 +1,11 @@
+clearvars
+%% Bestand inladen
+load('sierrademml(1).mat');
+DEM = sierrademml;
+%% Helling berekenen
+res = 30;
+dzdx = zeros(size(DEM));
+dzdy = zeros(size(DEM));
+dzdx(:,2:end-1) = (DEM(:,3:end) - DEM(:,1:end-2))./(2*res);
+dzdy(2:end-1,:) = (DEM(3:end,:) - DEM(1:end-2,:))./(2*res); 
+helling = sqrt((dzdx).^2 + (dzdy).^2);
