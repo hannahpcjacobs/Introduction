@@ -1,0 +1,26 @@
+clearvars;
+clc;
+clear all;
+Nini = 100;
+Wini = 25;
+c = 0.01;
+d = 0.24;
+e = 0.005;
+r = 0.48;
+
+dt = 0.05;
+totT = 100;
+time = 0:dt:totT;
+
+N(1) = Nini;
+W(1) = Wini;
+time(1) = 2;
+for t=2:numel(time)
+    dN = (r* N(t-1) - c*W(t-1)*N(t-1))*dt;
+    dW = -((d*W(t-1)) + e*W(t-1)*N(t-1))*dt;
+    N(t)=N(t-1)+dN;
+    W(t)=W(t-1)+dN;
+end
+plot(time,N);
+hold on
+plot(time,W);
